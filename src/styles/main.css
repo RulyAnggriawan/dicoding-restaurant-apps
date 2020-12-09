@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
 html, body, main{
@@ -62,10 +65,10 @@ header img{
 
 
 .jumbotron{
-    margin-top: 1px;
+    margin-top: 5px;
     width: 100%;
     min-height: 250px ;
-    background-image: url("/images/heros/hero-image_3.jpg");
+    background-image: url('./images/heros/hero-image_3.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -96,6 +99,21 @@ footer{
     min-height: 50px;
     background-color: #b6eb7a;
     line-height: 50px;
+}
+
+.skip-link{
+    background-color: #b6eb7a;
+    padding: 10px;
+    position: absolute;
+    top: -100px;
+}
+
+.skip-link:focus{
+    top: 0;
+}
+
+*:focus{
+    outline: 2px solid;
 }
 
 /* style for tablet */

@@ -3,9 +3,8 @@ import RestaurantItem from './restaurant-item'
 const main = () => {
 
     const getData = async () => {
-        return fetch("./DATA.json")
-        .then(res => res.json())
-        .then(data => Promise.resolve(data))
+        let jsonData = require("./DATA.json");
+        return Promise.resolve(jsonData);
     }
 
     let restaurantList = document.querySelector("#restaurant-list");
