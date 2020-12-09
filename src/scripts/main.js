@@ -9,7 +9,20 @@ const main = () => {
     }
 
     let restaurantList = document.querySelector("#restaurant-list");
+    let hamburgerButton = document.querySelector("#hamburger");
+    let drawer = document.querySelector("#drawer");
+    let bodyElement = document.querySelector("body")
     
+    hamburgerButton.addEventListener("click", event => {
+        drawer.classList.toggle("hidden");
+        event.stopPropagation();
+    })
+
+    bodyElement.addEventListener("click", event => {
+        drawer.classList.add("hidden")
+        event.stopPropagation();
+    })
+
     getData().then(data => {
         data.restaurants.forEach(item => {
             let restaurantItem = document.createElement("restaurant-item");
@@ -17,6 +30,8 @@ const main = () => {
             restaurantList.appendChild(restaurantItem);
         });
     })
+
+
 }
 
 export default main;

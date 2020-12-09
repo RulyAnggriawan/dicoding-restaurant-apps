@@ -14,16 +14,32 @@ img {
 
 header{
     min-height: 80px;
-
+    display: grid;
+    grid-template-columns: 2fr auto;
+    grid-template-rows: 80px auto;    
 }
 
-/* header>h1{
-    padding-left: 50px;
-    text-align: left;
-    min-height: 80px;
-    line-height: 80px;
-    display: inline-block;
-} */
+header ul{
+    list-style-type: none;
+    text-align: center;
+    width: 100%;
+}
+
+header li{
+    padding: 10px;
+    border-top: 1px solid black;
+}
+
+.hidden{
+    display: none;
+}
+
+#drawer{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 2;
+}
+
 header p{
     line-height: 80px;
     display: inline-block;
@@ -33,30 +49,20 @@ header img{
     display: inline-block;
     height: 100%;
     vertical-align: middle;
-
 }
 
-nav{
-    min-height: 80px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding-right: 50px;
-}
-
-nav>ul{
-    text-align: right;
-    padding: 0 10px 10px 0;
-}
-
-nav li{
-    display: inline-block;
-    padding: 0 10px;
-    min-height: 80px;
+#hamburger{
+    text-align: center;
     line-height: 80px;
+    font-size: 2em;
+    font-weight: bold;
 }
+
+
+
 
 .jumbotron{
+    margin-top: 1px;
     width: 100%;
     min-height: 250px ;
     background-image: url("/images/heros/hero-image_3.jpg");
@@ -80,6 +86,7 @@ main h2{
 
 
 a{
+    text-decoration: none;
     min-width: 44px;
     min-height: 44px;
 }
@@ -91,51 +98,40 @@ footer{
     line-height: 50px;
 }
 
-@media screen and (max-width: 760px){
-    /* #drawer{
+/* style for tablet */
+@media screen and (min-width: 768px){
+    header{
+        grid-template-columns: 1fr 2fr;
+    }
+
+    #hamburger{
         display: none;
-    } */
-}
-
-@media screen and (min-width: 480px){
-
-    /* header{
-        text-align: center;
     }
-    header>h1{
-        padding-left: 0px;
-        text-align: center;
+
+    #drawer{
+        display: block;
+        grid-column-start: 2;
+        grid-row-start: 1;
+    }
+
+    nav{
         min-height: 80px;
+    }
+
+    nav>ul{
+        text-align: right;
+        padding: 0 10px 10px 0;
+    }
+
+    nav li{
+        display: inline-block;
+        padding: 0 10px;
         line-height: 80px;
-        display: block;
-    }
-    
-    header img{
-        display: block;
-        height: 100%;
-        margin: 0 auto;
-        vertical-align: middle;
-    }
+        border-top: none;
+    } 
 
     main{
-        margin: 20px 20px;
-    }
-
-    .jumbotron{
-        min-height: 150px;
-    }
-
-    #restaurant-list{
-        display: grid;
-        width: 100%;
-        grid-template-columns: 1fr;
-    } */
-}
-
-@media screen and (min-width: 768px){
-
-    /* main{
-        margin: 50px 50px;
+        padding: 0 50px;
     }
 
     #restaurant-list{
@@ -143,19 +139,18 @@ footer{
         width: 100%;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 20px;
-    } */
+    }
+
+
 }
 
+/* style for monitor */
 @media screen and (min-width: 1025px){
-
-    /* main{
-        margin: 50px 50px;
-    }
 
     #restaurant-list{
         display: grid;
         width: 100%;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 20px;
-    } */
+    } 
 }
