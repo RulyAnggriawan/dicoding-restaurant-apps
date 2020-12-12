@@ -116,6 +116,14 @@ footer{
     outline: 2px solid;
 }
 
+.description{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display:-webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
 /* style for tablet */
 @media screen and (min-width: 768px){
     header{
