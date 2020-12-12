@@ -1,12 +1,17 @@
-class RestaurantItem extends HTMLElement{
-    set restaurant(restaurant){
-        const target = {};
-        ({name: this.name, description : this.description, city: this.city, rating:this.rating, pictureId : this.img} = restaurant);
-        this.render();
-    }
-    
-    render(){
-        this.innerHTML = `
+class RestaurantItem extends HTMLElement {
+  set restaurant(restaurant) {
+    ({
+      name: this.name,
+      description: this.description,
+      city: this.city,
+      rating: this.rating,
+      pictureId: this.img,
+    } = restaurant);
+    this.render();
+  }
+
+  render() {
+    this.innerHTML = `
         <style>
             .restaurant{
                 position: relative;
@@ -63,7 +68,7 @@ class RestaurantItem extends HTMLElement{
             </div>
         </article>
         `;
-    }
+  }
 }
 
 customElements.define('restaurant-item', RestaurantItem);
