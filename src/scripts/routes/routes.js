@@ -1,7 +1,12 @@
-import RestaurantList from '../views/pages/restaurant-list';
+import Home from '../views/pages/home';
+import Favorite from '../views/pages/favorite';
+import Detail from '../views/pages/detail';
 
 const routes = {
-  '/': RestaurantList,
+  '/': Home,
+  '/favorite': Favorite,
+  '/detail/:id': Detail,
+  '/detail': Detail,
 };
 
 export default routes;

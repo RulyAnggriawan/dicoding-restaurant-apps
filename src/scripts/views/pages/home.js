@@ -1,7 +1,8 @@
-import '../templates/restaurant-item';
+import '../templates/restaurant-highlight';
 import RestaurantSource from '../../data/restaurant-source';
+import CONFIG from '../../globals/config';
 
-const RestaurantList = {
+const Home = {
 
   async render() {
     return `
@@ -14,11 +15,14 @@ const RestaurantList = {
     const restaurants = await RestaurantSource.list();
     const restaurantList = document.querySelector('#restaurant-list');
     restaurants.forEach((restaurant) => {
-      const restaurantItem = document.createElement('restaurant-item');
-      restaurantItem.restaurant = restaurant;
-      restaurantList.appendChild(restaurantItem);
+      const restaurantHighlight = document.createElement('restaurant-highlight');
+      restaurantHighlight.restaurant = {
+        ...restaurant,
+        pictureId: CONFIG.BASE_IMAGE_URL + restaurant.pictureId,
+      };
+      restaurantList.appendChild(restaurantHighlight);
     });
   },
 };
 
-export default RestaurantList;
+export default Home;

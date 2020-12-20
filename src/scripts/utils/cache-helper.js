@@ -1,3 +1,4 @@
+import CONFIG from '../globals/config';
 const CacheHelper = {
   async cachingAppShell(request) {
     const cache = await this._openCache();
@@ -5,7 +6,7 @@ const CacheHelper = {
   },
   async deleteOldCache() {
     const cacheNames = await caches.keys();
-    cacheNames.filter((name) => name !== 'restaurant-calalogue-v1')
+    cacheNames.filter((name) => name !== CONFIG.CACHE_NAME)
       .map((filteredName) => caches.delete(filteredName));
   },
   async revalidateCache(request) {
@@ -17,7 +18,7 @@ const CacheHelper = {
     return this._fetchRequest(request);
   },
   async _openCache() {
-    return caches.open('restaurant-catalogue-v1');
+    return caches.open(CONFIG.CACHE_NAME);
   },
   async _addCache(request) {
     const cache = await this._openCache();

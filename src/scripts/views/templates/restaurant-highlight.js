@@ -1,6 +1,12 @@
-class RestaurantItem extends HTMLElement {
+class RestaurantHighlight extends HTMLElement {
+  constructor() {
+    super();
+    this._shadowRoot = this.attachShadow({ mode: 'open' });
+  }
+
   set restaurant(restaurant) {
     ({
+      id: this.id,
       name: this.name,
       description: this.description,
       city: this.city,
@@ -11,8 +17,13 @@ class RestaurantItem extends HTMLElement {
   }
 
   render() {
-    this.innerHTML = `
+    this._shadowRoot.innerHTML = `
         <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
             .restaurant{
                 position: relative;
                 padding-bottom: 50px;
@@ -51,24 +62,36 @@ class RestaurantItem extends HTMLElement {
                 font-size: 1.5em;
                 margin: 5px 0;
             }
-            
-            .description{
+
+            .name a{
+                margin: 0;
+                padding: 0;
+                
+            }
+
+            .restaurant .description{
                 text-align: justify;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                display:-webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
             }
         </style>
         <article class="restaurant">
             <div class="cover">
                 <p class="city">${this.city}</p>
-                <img src="${this.img}" alt="image of restaurant ${this.name}" >
+                <img src="${this.img}" alt="restaurant ${this.name}" >
             </div>
             <div class="content">
                 <p class="rating">Rating : ${this.rating}</p>
-                <p class="name">${this.name}</p>
+                <p class="name"><a href="/#/detail/${this.id}" title="go to detail">${this.name}</a></p>
                 <p class="description">${this.description}</p>
             </div>
+            <hr>
         </article>
         `;
   }
 }
 
-customElements.define('restaurant-item', RestaurantItem);
+customElements.define('restaurant-highlight', RestaurantHighlight);
