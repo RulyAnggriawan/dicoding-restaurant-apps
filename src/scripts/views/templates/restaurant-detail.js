@@ -1,7 +1,8 @@
+import LikeButton from './like-button';
+
 class RestaurantDetail extends HTMLElement {
   constructor() {
     super();
-    this._shadowRoot = this.attachShadow({ mode: 'open' });
   }
 
   set restaurant(restaurant) {
@@ -22,7 +23,7 @@ class RestaurantDetail extends HTMLElement {
   }
 
   render() {
-    this._shadowRoot.innerHTML = `
+    this.innerHTML = `
     <style>
         *{
             margin: 0;
@@ -163,7 +164,7 @@ class RestaurantDetail extends HTMLElement {
     </style>
     <article class="restaurant-detail">
     <div class="content">
-        <h3 class="name">${this.name}</h3>
+        <h3 class="name">${this.name}</h3> <like-button is-liked='false'></like-button>
         <section class="rating">
             <p>${this.rating}</p>
         </section>
