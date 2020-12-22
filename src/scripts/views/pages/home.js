@@ -18,7 +18,7 @@ const Home = {
       const restaurantHighlight = document.createElement('restaurant-highlight');
       restaurantHighlight.restaurant = {
         ...restaurant,
-        pictureId: CONFIG.BASE_IMAGE_URL + restaurant.pictureId,
+        imageUrl: CONFIG.BASE_IMAGE_URL + restaurant.pictureId,
       };
       restaurantList.appendChild(restaurantHighlight);
     });

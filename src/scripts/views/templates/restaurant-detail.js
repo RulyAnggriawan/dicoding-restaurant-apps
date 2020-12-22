@@ -19,7 +19,6 @@ class RestaurantDetail extends HTMLElement {
       customerReviews: this.customerReviews,
     } = restaurant);
     this.render();
-    console.log(this.menus.foods);
   }
 
   render() {
@@ -164,7 +163,7 @@ class RestaurantDetail extends HTMLElement {
     </style>
     <article class="restaurant-detail">
     <div class="content">
-        <h3 class="name">${this.name}</h3> <like-button is-liked='false'></like-button>
+        <h3 class="name">${this.name}</h3> 
         <section class="rating">
             <p>${this.rating}</p>
         </section>

@@ -11,7 +11,7 @@ class RestaurantHighlight extends HTMLElement {
       description: this.description,
       city: this.city,
       rating: this.rating,
-      pictureId: this.img,
+      imageUrl: this.imageUrl,
     } = restaurant);
     this.render();
   }
@@ -81,7 +81,7 @@ class RestaurantHighlight extends HTMLElement {
         <article class="restaurant">
             <div class="cover">
                 <p class="city">${this.city}</p>
-                <img src="${this.img}" alt="restaurant ${this.name}" >
+                <img src="${this.imageUrl}" alt="restaurant ${this.name}" >
             </div>
             <div class="content">
                 <p class="rating">Rating : ${this.rating}</p>

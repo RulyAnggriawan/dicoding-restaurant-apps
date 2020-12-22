@@ -8,6 +8,10 @@ const DrawerInitiator = {
     content.addEventListener('click', (event) => {
       this._closeDrawer(event, drawer);
     });
+
+    drawer.addEventListener('click', (event) => {
+      this._closeDrawer(event, drawer);
+    });
   },
   _toggleDrawer(event, drawer) {
     event.stopPropagation();
