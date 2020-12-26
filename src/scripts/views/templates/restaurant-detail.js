@@ -1,10 +1,4 @@
-import LikeButton from './like-button';
-
 class RestaurantDetail extends HTMLElement {
-  constructor() {
-    super();
-  }
-
   set restaurant(restaurant) {
     ({
       id: this.id,
@@ -12,7 +6,7 @@ class RestaurantDetail extends HTMLElement {
       description: this.description,
       city: this.city,
       rating: this.rating,
-      pictureId: this.img,
+      pictureId: this.pictureId,
       categories: this.categories,
       menus: this.menus,
       address: this.address,
@@ -97,15 +91,25 @@ class RestaurantDetail extends HTMLElement {
         .restaurant-detail .description{
             text-align: justify;
         }
+
+        .headline{
+            max-width: 768px;
+            margin-right: auto;
+            margin-left: auto;
+        }
         
         .restaurant-detail .menu{
             border-top: 1px solid #89c9b8;
             margin-top: 10px;
             padding-top: 10px;
+            max-width: 768px;
+            margin-right: auto;
+            margin-left: auto;
         }
         
         .restaurant-detail .menu>ul{
             list-style-type: none;
+            margin-left: 20px;
         }
         
         .restaurant-detail .menu>ul>li{
@@ -116,6 +120,9 @@ class RestaurantDetail extends HTMLElement {
             border-top: 1px solid #89c9b8;
             margin-top: 10px;
             padding-top: 10px;
+            max-width: 768px;
+            margin-right: auto;
+            margin-left: auto;
         }
         
         .customer-review ul{
@@ -127,7 +134,6 @@ class RestaurantDetail extends HTMLElement {
             border: 1px solid #c7e2b2;
             border-radius: 5px;
             padding : 10px;
-            /* background-color: lightblue; */
         }
         
         .customer-review .name{
@@ -154,37 +160,94 @@ class RestaurantDetail extends HTMLElement {
         .customer-review input{
             width: 100%;
         }
+
+        button{
+            width: 100%;
+        }
         
-        .customer-review input[type=submit]{
+        .customer-review button[type=submit]{
             margin-top: 20px;
+            margin-right: auto;
+            margin-left: auto;
             background-color: #e1ffc2;
             padding: 15px;
+        }
+
+        .img-and-desc{
+            max-width: 768px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+
+        @media screen and (min-width: 768px){
+            .restaurant-detail{
+                font-size: 1.5em;
+            }
+            .menu>ul{
+                margin-left: 0;
+                display: grid;
+                grid-template-columns: 1fr 1fr
+            }
+
+            .menu>ul>li{
+                padding-left: 40%;
+            }
+        }
+
+        @media screen and (min-width: 1025px){
+            .restaurant-detail{
+                font-size: 1.7em;
+            }
+
+            .headline{
+                display: grid;
+                grid-template-columns: 1fr 3fr;
+                margin: 30px auto;
+            }
+
+            .category>h4{
+                display: none;
+            }
+
+            .rating{
+                grid-column-start: 1;
+                grid-column-end: 2;
+            }
+
+            .address{
+                grid-column-start: 2;
+                grid-column-end: 3;
+                grid-row-start: 1;
+            }
+            
         }
     </style>
     <article class="restaurant-detail">
     <div class="content">
-        <h3 class="name">${this.name}</h3> 
-        <section class="rating">
-            <p>${this.rating}</p>
-        </section>
-        
-        
-        <section class="category">
+
+        <section class="headline">
+            <h3 class="name">${this.name}</h3> 
+            <div class="rating">
+                <p>${this.rating}</p>
+            </div>
             
-            <h4>Categories</h4>
-            <ul>
-                ${this.categories.map((category) => `<li>${category.name}</li>`).join('')}
-            </ul>
+            
+            <section class="category">
+                
+                <h4>Categories</h4>
+                <ul>
+                    ${this.categories.map((category) => `<li>${category.name}</li>`).join('')}
+                </ul>
+            </section>
+            
+            
+            <p class="address">${this.address}, ${this.city}</p>
         </section>
-        
-        <section>
-        <p class="address">${this.address}, ${this.city}</p>
-        <img src="https://restaurant-api.dicoding.dev/images/medium/${this.img}" alt="restaurant ${this.name}" >
-        
-        
-        
-        <p class="description">${this.description}</p>
-        
+
+        <section class="img-and-desc">
+            <img src="https://restaurant-api.dicoding.dev/images/medium/${this.pictureId}" alt="restaurant ${this.name}" >
+            <p class="description">${this.description}</p>
         </section>
         <section class="menu">
             <h4>Menus</h4>
@@ -206,7 +269,7 @@ class RestaurantDetail extends HTMLElement {
         <section class="customer-review">
             <h4>Customer Reviews</h4>
             <ul>
-                ${this.customerReviews.map(customerReview => `
+                ${this.customerReviews.map((customerReview) => `
                 <li>
                     <p class="name">${customerReview.name}</p>
                     <p class="date">${customerReview.date}</p>
@@ -216,12 +279,12 @@ class RestaurantDetail extends HTMLElement {
                 
                 
                 <li>
-                    <form action="#">
-                        <label for="form-review">Review</label>
-                        <textarea name="form review" id="form-review" rows="3"></textarea>
-                        <label for="form-name">Name</label>
-                        <input type="text" id="form-name" name="form name">
-                        <input type="submit">
+                    <form id="submit-review">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name">
+                        <label for="review">Review</label>
+                        <textarea name="review" id="review" rows="3"></textarea>
+                        <button type="submit">Submit</button>
                     </form>
                 </li>
             </ul>

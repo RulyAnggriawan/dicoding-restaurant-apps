@@ -1,4 +1,5 @@
 import CONFIG from '../globals/config';
+
 const CacheHelper = {
   async cachingAppShell(request) {
     const cache = await this._openCache();
@@ -12,7 +13,6 @@ const CacheHelper = {
   async revalidateCache(request) {
     const response = await caches.match(request);
     if (response) {
-      this._fetchRequest(request);
       return response;
     }
     return this._fetchRequest(request);

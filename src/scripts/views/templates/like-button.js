@@ -33,7 +33,7 @@ class LikeButton extends HTMLElement {
   }
 
   setClickEvent(func) {
-    const button = document.querySelector('#likeButton');
+    const button = this;
     button.addEventListener('click', func);
   }
 

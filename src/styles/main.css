@@ -170,6 +170,14 @@ footer{
         font-size: medium;
     }
 
+    #favorite{
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+        font-size: medium;
+    }
+
 
 }
 
@@ -177,6 +185,14 @@ footer{
 @media screen and (min-width: 1025px){
 
     #restaurant-list{
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+        font-size: large;
+    }
+
+    #favorite{
         display: grid;
         width: 100%;
         grid-template-columns: repeat(3, 1fr);
